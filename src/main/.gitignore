@@ -1,0 +1,37 @@
+# Файлы Intellij IDEA
+.idea/
+*.iws
+*.iml
+*.ipr
+
+# Папка сборки Maven
+target/
+
+# Системные файлы
+.DS_Store
+Thumbs.db
+
+# Файлы операционных систем
+*.log
+*.tmp
+*.temp
+
+# Файлы логов
+logs/
+
+# Файлы конфигурации с чувствительными данными
+config.properties
+application.properties
+*.config
+
+# Файлы базы данных (если используются)
+*.db
+*.sqlite
+*.h2.db
+
+# Файлы резервных копий
+*.bak
+*.backup
+
+# Файлы зависимостей Maven (опционально)
+# dependency-reduced-pom.xml
