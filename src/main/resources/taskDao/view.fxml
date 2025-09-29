@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.control.cell.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox spacing="15" style="-fx-padding: 20; -fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="taskDao.main.GameController">
+
+    <!-- Заголовок -->
+    <Label style="-fx-font-size: 24; -fx-font-weight: bold; -fx-text-fill: #007bff; -fx-padding: 0 0 10 0;" text="🎮 Менеджер игр" />
+
+    <!-- Панель управления -->
+    <HBox alignment="CENTER_LEFT" spacing="15" style="-fx-padding: 15; -fx-background-color: #f8f9fa; -fx-background-radius: 8;">
+        <Label style="-fx-text-fill: #495057; -fx-font-weight: bold;" text="Настройки:" />
+
+        <MenuButton fx:id="dataSourceMenu" style="-fx-background-color: #6c757d; -fx-background-radius: 6;" text="Источник данных" textFill="WHITE">
+            <tooltip>
+                <Tooltip text="Выберите место хранения данных" />
+            </tooltip>
+            <items>
+                <MenuItem onAction="#handleSwitchToJson" text="JSON" />
+                <MenuItem onAction="#handleSwitchToPostgres" text="PostgreSQL" />
+            </items>
+        </MenuButton>
+
+        <ComboBox fx:id="filterComboBox" promptText="Фильтр игр" style="-fx-background-color: #ffffff; -fx-background-radius: 6;">
+            <tooltip>
+                <Tooltip text="Фильтр по типу игры" />
+            </tooltip>
+        </ComboBox>
+
+        <Button onAction="#handleRandomGame" style="-fx-background-color: #6c757d; -fx-background-radius: 6;" text="Случайная игра" textFill="WHITE">
+            <tooltip>
+                <Tooltip text="Получить случайную рекомендацию для игры" />
+            </tooltip>
+        </Button>
+    </HBox>
+
+    <!-- Таблица -->
+    <TableView fx:id="gameTable" prefHeight="350" style="-fx-border-color: #dee2e6; -fx-border-radius: 6;">
+        <columns>
+            <TableColumn prefWidth="150.0" text="Название">
+                <cellValueFactory>
+                    <PropertyValueFactory property="title" />
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn prefWidth="100.0" text="Жанр">
+                <cellValueFactory>
+                    <PropertyValueFactory property="genre" />
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn prefWidth="90.0" text="Мин. игроков">
+                <cellValueFactory>
+                    <PropertyValueFactory property="minPlayers" />
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn prefWidth="100.0" text="Макс. игроков">
+                <cellValueFactory>
+                    <PropertyValueFactory property="maxPlayers" />
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn prefWidth="80.0" text="Статус">
+                <cellValueFactory>
+                    <PropertyValueFactory property="status" />
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn prefWidth="150.0" text="Последняя игра">
+                <cellValueFactory>
+                    <PropertyValueFactory property="lastPlayed" />
+                </cellValueFactory>
+            </TableColumn>
+        </columns>
+    </TableView>
+
+    <!-- Панель действий -->
+    <HBox alignment="CENTER_RIGHT" spacing="12" style="-fx-padding: 15; -fx-background-color: #f8f9fa; -fx-background-radius: 8;">
+        <Button onAction="#handleAddGame" style="-fx-background-color: #007bff; -fx-background-radius: 6;" text="Добавить игру" textFill="WHITE">
+            <tooltip>
+                <Tooltip text="Добавить новую игру в коллекцию" />
+            </tooltip>
+            <font>
+                <Font name="System Bold" size="12.0" />
+            </font>
+        </Button>
+
+        <Button onAction="#handleDeleteGame" style="-fx-background-color: #dc3545; -fx-background-radius: 6;" text="Удалить игру" textFill="WHITE">
+            <tooltip>
+                <Tooltip text="Удалить выбранную игру из коллекции" />
+            </tooltip>
+            <font>
+                <Font name="System Bold" size="12.0" />
+            </font>
+        </Button>
+    </HBox>
+
+</VBox>
